@@ -56,4 +56,4 @@ function wordStatistics(req,res){
     }
 }
 
-module.exports = { wordCounter, wordStatistics, test}
+module.exports = { wordCounter, wordStatistics}
