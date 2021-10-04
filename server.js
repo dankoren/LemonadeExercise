@@ -17,6 +17,4 @@ app.route('/word')
   .get(wordController.wordStatistics)
   .post(wordController.wordCounter);
 
-app.route('/urlTest')
-  .get(wordController.test)
-console.log('API server started on: ' + port);
+console.log('Web server started on port: ' + port);

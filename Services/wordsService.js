@@ -20,7 +20,7 @@ module.exports = class WordsService{
                 }
             }
         }
-        
+
         loadFile(filePath);
     }
 
@@ -53,6 +53,11 @@ module.exports = class WordsService{
     }
 
     getWordStatistics = (word) => {
-        return this.wordsCounter[word];
+        if(this.wordsCounter && this.wordsCounter[word]){
+            return this.wordsCounter[word];
+        }
+        else{
+            return 0;
+        }
     }
 }

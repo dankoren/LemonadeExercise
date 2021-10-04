@@ -24,7 +24,6 @@ function wordCounter(req, res){
         }
         else if(inputType === 'url'){
             const url = req.body;
-
             http.request(url, (response) => {
                 let text = '';
                 response.on('data', (chunk) => text += chunk);
@@ -35,8 +34,9 @@ function wordCounter(req, res){
             res.status(200).send();
         }
         else{
-            console.log('Unsupported InputType');
-            res.status(400).send();
+            const message = 'Unsupported InputType';
+            console.log(message);
+            res.status(400).send(message);
         }
     } catch (error) {
         console.error(error.message);
@@ -54,24 +54,6 @@ function wordStatistics(req,res){
     else{
         res.status(400).send();
     }
-
-}
-
-function test(req,res){
-    console.log('aaaa');
-    http.request('http://api.plos.org/search?q=title:DNA', (response) => {
-        console.log("response:::: " + response.toString().substring(0,5));
-        let text = '';
-        response.on('data', (chunk) => {
-            text += chunk
-            console.log("chunk: " + chunk);
-        });
-        response.on('end', () => {
-            console.log('text: ' + text);
-            //service.addWords(text.toString())
-        });
-    }).end();
-    res.status(200).send();
 }
 
 module.exports = { wordCounter, wordStatistics, test}
