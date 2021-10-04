@@ -8,8 +8,6 @@ module.exports = class WordsService{
     wordsCounter = {};
 
     constructor() {
-        loadFile(filePath);
-
         const loadFile = (filePath) => {
             if(!fs.existsSync(filePath)){
                 fs.writeFileSync(filePath, '');
@@ -22,6 +20,8 @@ module.exports = class WordsService{
                 }
             }
         }
+        
+        loadFile(filePath);
     }
 
     addWords = (text) =>{
