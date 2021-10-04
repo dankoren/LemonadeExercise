@@ -1,0 +1,24 @@
+{
+  "name": "lemonadeexercise",
+  "version": "1.0.0",
+  "description": "A word counter",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "clear": "node ./clearSavedWords.js"
+  },
+  "author": "dan koren",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "url-parse": "^1.5.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.10.2",
+    "nodemon": "^2.0.13",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  }
+}
