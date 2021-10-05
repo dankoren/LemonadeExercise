@@ -1,5 +1,5 @@
-
 const fs = require('fs');
+const getWords = require('get-words');
 
 const filePath = './words.txt'
 
@@ -25,12 +25,6 @@ module.exports = class WordsService{
     }
 
     addWords = (text) =>{
-        const extractWords = (text) => {
-            const normalizedText = text.toLowerCase()
-                                    .replace(/\d+|-|,/g, '')
-            return normalizedText.split(' ');
-        }
-
         const addWord = (word) => {
             if(this.wordsCounter[word]){
                 this.wordsCounter[word]++;
@@ -47,7 +41,9 @@ module.exports = class WordsService{
             });
         }
 
-        const words = extractWords(text);
+        const normalizedText = text.toLowerCase();
+        const words = getWords(normalizedText, {keepContraction: true, breakCompoundWord: true});
+
         words.forEach(word=> addWord(word));
         saveToFile(); // Making the data persistence
     }
